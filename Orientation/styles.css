@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .navbar {
+    background-color: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .navbar span {
+    margin: 0 15px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .navbar span:hover {
+    text-decoration: underline;
+  }
+  
+  /* Content Section */
+  .content {
+    margin: 30px auto;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .bio {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .bio-image {
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+    margin-right: 30px;
+    border-radius: 8px;
+  }
+  
+  .bio-details {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .bio-details p {
+    margin: 5px 0;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  }
+
+  .btn:active {
+    background-color: #3e8e41;
+    transform: scale(0.98);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);}
