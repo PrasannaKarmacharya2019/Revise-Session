@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        ul { margin-top: 20px; }
+        li { margin-bottom: 5px; }
+
+            body {
+        background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 2px #fff8;
+    }
+    #studentForm {
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+    #studentName {
+        padding: 10px 15px;
+        border: 1px solid #fda085;
+        border-radius: 6px;
+        font-size: 1rem;
+        outline: none;
+        transition: border 0.2s;
+    }
+    #studentName:focus {
+        border: 1.5px solid #f6d365;
+        background: #fffbe7;
+    }
+    button[type="submit"] {
+        background: linear-gradient(90deg, #fda085 0%, #f6d365 100%);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 18px;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 2px 8px #fda08533;
+        transition: background 0.2s, transform 0.1s;
+    }
+    button[type="submit"]:hover {
+        background: linear-gradient(90deg, #f6d365 0%, #fda085 100%);
+        transform: translateY(-2px) scale(1.04);
+    }
+    #studentList {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+        padding: 20px 30px;
+        min-width: 300px;
+        max-width: 400px;
+        margin-top: 10px;
+    }
+    #studentList li {
+        padding: 10px 0;
+        border-bottom: 1px solid #f6d36544;
+        font-size: 1.08rem;
+        color: #444;
+        letter-spacing: 1px;
+        transition: background 0.2s;
+    }
+    #studentList li:last-child {
+        border-bottom: none;
+    }
+    #studentList li:hover {
+        background: #fffbe7;
+    }
+
+    </style>
+</head>
+<body>
+    <h2>Student List</h2>
+    <form id="studentForm">
+        <input type="text" id="studentName" placeholder="Enter student name" required>
+        <button type="submit">Add Student</button>
+    </form>
+    <ul id="studentList">
+        <!-- Students will be listed here -->
+    </ul>
+
+    <script>
+        // Get students from localStorage or use default list
+        function getStudents() {
+            const stored = localStorage.getItem('students');
+            return stored ? JSON.parse(stored) : ["Alice", "Bob", "Charlie"];
+        }
+
+        function saveStudents(students) {
+            localStorage.setItem('students', JSON.stringify(students));
+        }
+
+        const studentList = document.getElementById('studentList');
+        const studentForm = document.getElementById('studentForm');
+        const studentNameInput = document.getElementById('studentName');
+
+        // Function to append a student to the list
+        function appendStudent(name) {
+            const li = document.createElement('li');
+            li.textContent = name;
+            studentList.appendChild(li);
+        }
+
+        // Render students from localStorage or default
+        function renderStudents() {
+            studentList.innerHTML = '';
+            getStudents().forEach(appendStudent);
+        }
+
+        renderStudents();
+
+        // Handle form submission
+        studentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = studentNameInput.value.trim();
+            if (name) {
+                const students = getStudents();
+                students.push(name);
+                saveStudents(students);
+                renderStudents();
+                studentNameInput.value = '';
+            }
+        });
+        // Add delete button to each student
+        function appendStudent(name, index) {
+            const li = document.createElement('li');
+            li.textContent = name;
+
+            const delBtn = document.createElement('button');
+            delBtn.textContent = 'Delete';
+            delBtn.style.marginLeft = '15px';
+            delBtn.style.background = '#fda085';
+            delBtn.style.color = '#fff';
+            delBtn.style.border = 'none';
+            delBtn.style.borderRadius = '4px';
+            delBtn.style.padding = '4px 10px';
+            delBtn.style.cursor = 'pointer';
+            delBtn.style.fontSize = '0.95rem';
+
+            delBtn.addEventListener('click', function() {
+            const students = getStudents();
+            students.splice(index, 1);
+            saveStudents(students);
+            renderStudents();
+            });
+
+            li.appendChild(delBtn);
+            studentList.appendChild(li);
+        }
+
+        // Update renderStudents to pass index
+        function renderStudents() {
+            studentList.innerHTML = '';
+            getStudents().forEach((name, idx) => appendStudent(name, idx));
+        }
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,83 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-8">
+      <header className="text-center py-6">
+        <h1 className="text-4xl font-bold">Samantha Aeriel</h1>
+        <p className="text-lg text-gray-600 mt-2">Front-End Developer | Electronics Engineer</p>
+      </header>
+
+      <section className="my-12">
+        <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+        <p className="text-gray-700 max-w-3xl mx-auto">
+          I am a front-end developer with a background in electronics engineering. I build responsive, accessible, and user-friendly web applications using modern tools like React and Tailwind CSS. I love bridging design with functionality.
+        </p>
+      </section>
+
+      <section className="my-12">
+        <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="text-xl font-bold">EduSphere</h3>
+              <p className="text-gray-600 my-2">
+                Personalized learning path generator with user profiling using KNN algorithm.
+              </p>
+              <div className="flex gap-2 mt-4">
+                <Button variant="outline" asChild>
+                  <a href="#" target="_blank">Live Demo</a>
+                </Button>
+                <Button variant="outline" asChild>
+                  <a href="#" target="_blank">GitHub</a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="text-xl font-bold">Noise Cancellation Filter</h3>
+              <p className="text-gray-600 my-2">
+                Adaptive FIR filter using LMS and RLS algorithms for acoustic noise cancellation.
+              </p>
+              <div className="flex gap-2 mt-4">
+                <Button variant="outline" asChild>
+                  <a href="#" target="_blank">Live Demo</a>
+                </Button>
+                <Button variant="outline" asChild>
+                  <a href="#" target="_blank">GitHub</a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="my-12">
+        <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+        <ul className="flex flex-wrap gap-4 text-gray-800">
+          <li className="bg-white border px-3 py-1 rounded-full">HTML5</li>
+          <li className="bg-white border px-3 py-1 rounded-full">CSS3</li>
+          <li className="bg-white border px-3 py-1 rounded-full">JavaScript</li>
+          <li className="bg-white border px-3 py-1 rounded-full">React</li>
+          <li className="bg-white border px-3 py-1 rounded-full">Tailwind CSS</li>
+          <li className="bg-white border px-3 py-1 rounded-full">Git</li>
+          <li className="bg-white border px-3 py-1 rounded-full">Figma</li>
+        </ul>
+      </section>
+
+      <section className="my-12">
+        <h2 className="text-2xl font-semibold mb-4">Contact</h2>
+        <form className="max-w-xl mx-auto grid gap-4">
+          <input className="border p-2 rounded" type="text" placeholder="Your Name" required />
+          <input className="border p-2 rounded" type="email" placeholder="Your Email" required />
+          <textarea className="border p-2 rounded" placeholder="Your Message" rows="4" required></textarea>
+          <Button type="submit">Send Message</Button>
+        </form>
+      </section>
+    </div>
+  );
+}
